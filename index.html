@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+
+	<title>That's Amazing! - A Tribute to Huell Howser's Travel Shows</title>
+
+	<meta name="author" content="ISSI">
+	<meta name="keywords" content="Huell Howser, Story Map, California, Beaches, Landmarks, Parks, Locales">
+	<meta name="description" content="A collection of locales Huell Howser has highlighted and explored.">
+
+	<!--Facebook Open Graph-->
+	<meta property="og:title" content="That's Amazing! - A Tribute to Huell Howser's Travel Shows" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://www.issigis.com/ThatsAmazing/" />
+	<meta property="og:image" content="http://www.issigis.com/ThatsAmazing/resources/images/ThatsAmazing_small.png" />
+	<meta property="og:site_name" content="ISSI" />
+	<meta property="og:description" content="A collection of locales Huell Howser has highlighted and explored."/>
+	<!-- <meta property="fb:app_id" content="" /> -->
+	<!--End Facebook-->
+
+	<!--Twitter Card Data-->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@issigis">
+	<meta name="twitter:url" content="http://www.issigis.com/ThatsAmazing/">
+	<meta name="twitter:title" content="That's Amazing! - A Tribute to Huell Howser's Travel Shows">
+	<meta name="twitter:description" content="A collection of locales Huell Howser has highlighted and explored.">
+	<meta name="twitter:image" content="http://www.issigis.com/ThatsAmazing/resources/images/ThatsAmazing_small.png">
+	<!--Twitter Card Data-->
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, user-scalable=no">
+
+	<link type="image/ico" rel="shortcut icon" href="//resources.esri.com/favicon.ico">
+	<link type="image/ico" rel="icon" href="//resources.esri.com/favicon.ico">
+
+	
+	<link href="//js.arcgis.com/3.9/js/dojo/dijit/themes/tundra/tundra.css" media="screen" rel="stylesheet" type="text/css" />
+	
+	<link href="app/stylesheets/jquery-ui-1.10.4.custom.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="//js.arcgis.com/3.9/js/esri/css/esri.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="app/stylesheets/arcgis.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="app/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!--[if lt IE 9]>
+	
+	<script src="app/javascript/oldIE-min.js" type="text/javascript"></script>
+	
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<script type="text/javascript">window.location = "http://browsehappy.com/"</script>
+	<![endif]-->
+
+</head>
+<body class="tundra">
+	
+	<div id="app-load-screen">
+		<h4 id="issi-loading-msg">Presented by<br /><br />Integrated Spatial Solutions, Inc.</h4>
+		<div id="loader"></div>
+
+
+		<h4 id="loading-message">Loading Playlist</h4>
+	</div>
+	
+		
+
+	<div id="app-content" class="region-center">
+		<div id="side-pane">
+	<div id="side-pane-buffer" class="region-top"></div>
+
+	<div id="side-pane-content-wrapper" class="region-center">
+		<div id="side-pane-controls" class="region-top">
+			<span class="icon-export playlist-control toggle-description" title="Toggle Description"></span>
+			<span class="icon-list playlist-control toggle-legend" title="Toggle Legend"></span>
+			<span class="icon-arrow-left playlist-control toggle-side-pane" title="Minimize list"></span>
+			<span class="icon-arrow-right playlist-control toggle-side-pane" title="Maximize list"></span>
+		</div>
+
+		<div id="side-pane-content" class="region-center">
+			<div id="info-pane" class="region-top">
+				<div id="mobile-info">
+					<h3 id="title-info" class="title-text"></h3>
+					<h4 id="subtitle-info" class="subtitle-text"></h4>
+					<hr>
+				</div>
+				<!-- <div id="description"></div> -->
+				<div id="legend-pane">
+					<div id="playlist-legend" class="legend"></div>
+					<div id="legend" class="legend"></div>
+				</div>
+				<div class="mobile-explore">
+					<button class="btn small back-button">Explore Map</button>
+				</div>
+			</div><!--info-pane-->
+			<div id="playlist-pane" class="region-center">
+				<div id="playlist-controls" class="region-top">
+					<input id="search" type="text" id="playlist-search" name="Search" placeholder="Search place list...">
+					<span id="search-submit" class="icon-search"></span>
+					<div id="filter-wrapper">
+						<p id="filter-toggle" class="icon-filter"></p>
+						<div id="filter-content">
+							<h5 class="filter-title">Choose series to filter:</h5>
+							<label class="select-all">Select All
+								<input type="checkbox" checked>
+							</label>
+							<hr>
+						</div>
+					</div>					
+				</div>
+				<div id="playlist" class="region-center">
+					<div class="playlist-no-layer-message">
+						The storytelling playlist app is a great template to showcase your map with a corresponding interactive list of points displayed in your map. <a href="http://downloads.esri.com/agol/pub/npstop102012/index.html" target="_blank">See example here.</a>
+						<br>
+						<br>
+						In order to build the intercative playlist, your webmap must include one of the following type of layers:
+						<br>
+						<ul>
+							<li>CSV layer embedded in webmap</li>
+							<li>Feature service layer</li>
+						</ul>
+					</div>
+				</div>
+			</div><!--/playlist-pane-->
+		</div>
+
+	</div><!--/side-pane-content-wrapper-->
+
+</div><!--/side-pane-->
+
+<div id="content" class="region-center">
+
+	<div id="banner" class="region-top">
+
+		<div id="header-text" class="region-center">
+			<h1 class="back-button icon-arrow-left"><span>Explore Map</span></h1>
+			<h1 id="title" class="title-text"></h1>
+			<h2 id="subtitle" class="subtitle-text"></h2>
+		</div><!--/header-text-->
+
+		<div id="branding-wrapper" class="region-right">
+			<div id="social">
+				<span class="icon-facebook2 social-share" title="Share on Facebook"></span>
+				<span class="icon-twitter2 social-share" title="Share on Twitter"></span>
+				<span class="icon-mail social-share" title="Comments / Feedback"></span>
+				<span class="icon-info social-share" title="Info / Credits"></span>
+				<div id="credit_area">
+					<span class="social-text">Designed by <a class="smLink" href="http://www.issi-gis.com" target="_blank">ISSI</a></span>
+				</div>
+				<div>
+					<span class="social-text">In cooperation with<br><a class="smLink" href="http://blogs.chapman.edu/huell-howser-archives/archives/" target="_blank">Chapman University's<br>Huell Howser Archive</a></span>
+				</div>
+			</div>
+		</div><!--/branding-wrapper-->
+
+		<div id="mobile-controls" class="region-right">
+			<!-- <span class="icon-book playlist-control toggle-description"></span> -->
+			<span class="icon-list playlist-control toggle-legend"></span>
+			<span class="icon-share"></span>
+		</div>
+	</div>
+
+	<div id="map-pane" class="region-center">
+		<div id="issi-overlay" class="toggle-side-pane">Presented by<br />Integrated Spatial Solutions, Inc.</div>
+		<div id="map" class="region-center"></div>
+		<div id="mobile-swipe-toggle" class="icon-arrow-right"></div>
+		<div id="map-blind"></div>
+		<div id="mobile-share">
+			<p class="icon-facebook2 social-share">&nbsp;Facebook</p>
+			<hr>
+			<p class="icon-twitter2 social-share">&nbsp;Twitter</p>
+		</div>
+
+	</div><!--/map-pane-->
+
+</div><!--/content-->
+
+<div id="info-message" title="Credits" style="z-index:-1;">
+	<p>
+		All television series referenced on this website are copyrighted by Huell Howser Productions.
+	</p>
+	<p>
+		The source code for this story map is based on the esri project located here: <br>
+		<a href="https://github.com/Esri/playlist-storytelling-template-js">Github - Playlist Story Map</a><br>
+		(Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>)
+	</p>
+	<p>
+		<span style="font-style: italic;">Disclaimer: The location data in this application represents the information presented by the Huell Howser Archive; there are a number of episodes from various shows that have yet to be cataloged and published on the website. Some of the locations presented here may no longer exist and some locations have been  omitted due to imprecise geography or extending too far from California borders.</span>
+	</p>
+</div>
+	</div>
+	
+	
+	<!--Google Analytics Start-->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-48106528-2']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	<!--Google Analytics End-->
+	
+	<script type="text/javascript">
+		var dojoConfig = {
+			parseOnLoad: true,
+			isDebug: false,
+			useDeferredInstrumentation: true,
+			packages: [
+			{
+				name: 'storymaps',
+				location: location.pathname.replace(/\/[^/]+$/, '/') + 'app/javascript'
+			},
+			{
+				name: 'lib',
+				location: location.pathname.replace(/\/[^/]+$/, '/') + 'lib'
+			}//,
+			// {
+			// 	name: 'esriTemplate',
+			// 	location: location.pathname.replace(/\/[^/]+$/, '/') + 'resources'
+			// }
+			]
+		};
+	</script>
+	<script src="//js.arcgis.com/3.9/" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		var configOptions = {
+			// The web map id
+			webmap: "da7bb25fb6d64eedbc1fe801d7406a76",
+			// Enter a title, if no title is specified, the webmap's title is used.
+			title: "",
+			// Enter a subtitle, if not specified the ArcGIS.com web map's summary is used
+			subtitle: "",
+			// Enter a description, if not specified the ArcGIS.com web map's description is used
+			description: "",
+			// Choose data fields
+			dataFields: {
+				// Change name field to match data
+				nameField: "Place",
+				// Change thumbnail field to match data
+				imageField: "Image_URL",
+				// Change color field to match data
+				colorField: "Color",
+				// Change order field to match data
+				orderField: "NumberSeries",
+				// EN: Added for additional order
+				// Change primary order field to match data
+				mainOrderField: "NumberAlpha",
+				// Change name filter to match data
+				filterField: "Series"
+			},
+			// Legend names for playlist markers
+			playlistLegend: {
+				// Add a name for your playlist point layer to be used in the legend.
+				"layerTitle": "TV Series",
+				// Choose to display your playlist point layer in the legend (true or false).
+				"visible": true,
+				"items": {
+					// EN: Added additional icons for the more colors
+					"blackIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California Missions",
+						"iconURL": "resources/images/markers/indexed/Black/BlackIcon1.png"
+					},
+					"brownIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Communities",
+						"iconURL": "resources/images/markers/indexed/Brown/BrownIcon1.png"
+					},
+					"orangeIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Gold",
+						"iconURL": "resources/images/markers/indexed/Orange/OrangeIcon1.png"
+					},
+					"cyanIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Golden Coast",
+						"iconURL": "resources/images/markers/indexed/Cyan/CyanIcon1.png"
+					},
+					"burgundyIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Golden Fairs",
+						"iconURL": "resources/images/markers/indexed/Burgundy/BurgundyIcon1.png"
+					},						
+					"blueIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Golden Parks",
+						"iconURL": "resources/images/markers/indexed/Blue/BlueIcon1.png"
+					},
+					"greenIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Green",
+						"iconURL": "resources/images/markers/indexed/Green/GreenIcon1.png"
+					},
+					"greyIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "California's Water",
+						"iconURL": "resources/images/markers/indexed/Grey/GreyIcon1.png"
+					},					
+					"pinkIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Downtown",
+						"iconURL": "resources/images/markers/indexed/Pink/PinkIcon1.png"
+					},
+					"limeIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Our Neighborhoods",
+						"iconURL": "resources/images/markers/indexed/Lime/LimeIcon1.png"
+					},
+					"magentaIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Palm Springs Week",
+						"iconURL": "resources/images/markers/indexed/Magenta/MagentaIcon1.png"
+					},
+					"redIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Road Trip",
+						"iconURL": "resources/images/markers/indexed/Red/RedIcon1.png"
+					},
+					"yellowIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "The Bench",
+						"iconURL": "resources/images/markers/indexed/Yellow/YellowIcon1.png"
+					},
+					"purpleIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Visiting",
+						"iconURL": "resources/images/markers/indexed/Purple/PurpleIcon1.png"
+					},
+					"lavenderIcon": {
+						// Choose to display icon in the legend (true or false).
+						"visible": true,
+						// Choose the display name in the legend.
+						"name": "Miscellaneous",
+						"iconURL": "resources/images/markers/indexed/Lavender/LavenderIcon1.png"
+					}					
+				}
+			},
+			// Add the layer names of valid point layers that should be excluded from the playlist and used as reference layers
+			excludedLayers: [],
+			// If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
+			bingMapsKey: "",
+			// Specify a proxy for custom deployment
+			proxyUrl: "",
+			// Specify the url to a geometry service
+			geometryServiceUrl: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
+			// Modify this to point to your sharing service URL if you are using the portal
+			sharingUrl: "http://www.arcgis.com/sharing/rest/content/items"
+		};
+
+	
+		require(["app/javascript/Playlist-viewer.min.js"]);
+	
+	</script>
+</body>
+</html>
